@@ -1,9 +1,13 @@
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils.decorators import method_decorator
 from django.views import generic
+from django.views.generic import DetailView
 
+from .forms import ItemForm
 from .models import UserProfile, Stuff
 
 
@@ -19,7 +23,8 @@ def index(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse("<html><body>%s signed in successfully.</body></html>" % mail)
+                    # return HttpResponse("<html><body>this is %s</body></html>" % request.user.username)
+                    return redirect('/divar/user_profile/')
                 else:
                     return render(request, 'index.html', {'error_message': 'Your account has been disabled'})
             else:
@@ -34,7 +39,7 @@ def index(request):
             user_profile = UserProfile.objects.create(user=user)
             user_profile.phone_number = phone_number
             user_profile.save()
-            return HttpResponse("<html><body>%s signed up successfully.</body></html>" % mail)
+            return redirect('/divar/user_profile/')
     else:
         HttpResponse("<html><body>not posted.</body></html>")
     # return HttpResponse("<html><body>not posted.</body></html>")
@@ -48,11 +53,34 @@ class ShowStuff(generic.ListView):
     def get_queryset(self):
         return Stuff.objects.order_by('id')[:20]
 
+
 def stuffDetail(request):
     stuffId = 1
-    message=""
+    message = ""
     # stuff = get_object_or_404(Stuff, pk=stuffId)
     stuff = {}
     user = request.user
-    return render(request, 'single-product-details.html', {'stuff': stuff, 'message':message})
+    return render(request, 'single-product-details.html', {'stuff': stuff, 'message': message})
 
+
+@method_decorator([login_required], name='dispatch')
+class UserProfileView(DetailView):
+    model = UserProfile
+    template_name = 'user_profile.html'
+
+    def get_object(self):
+        return get_object_or_404(UserProfile, pk=self.request.user.userprofile.id)
+
+
+@login_required
+def create_item(request):
+    form = ItemForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        item = form.save(commit=False)
+        item.owner = request.user.userprofile
+        item.save()
+        return HttpResponse("<html><body>item %s created successfully! :)</body></html>" % item.name)
+    context = {
+        "form": form,
+    }
+    return render(request, 'create_item.html', context)
