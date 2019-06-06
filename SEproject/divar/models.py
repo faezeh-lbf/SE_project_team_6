@@ -31,3 +31,4 @@ class Stuff(models.Model):
     city = models.CharField(max_length=30, default='Tehran')
     location = models.CharField(max_length=30)
     classtering3 = models.ForeignKey(Classtering3, on_delete=models.CASCADE, null=True)
+    # photo = models.ImageField(upload_to='stuffImages')

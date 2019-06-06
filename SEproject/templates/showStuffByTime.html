@@ -236,6 +236,11 @@
 
                         <div class="row">
 
+                        {% if msg %}
+                            <p style="color: green">{{ msg }}</p>
+                        {% endif %}
+                        {% for stuff in stuffList %}
+
                             <!-- Single Product -->
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <div class="single-product-wrapper">
@@ -243,7 +248,7 @@
                                     <div class="product-img">
                                         <img src="{% static 'img/product-img/product-1.jpg' %}" alt="">
                                         <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-2.jpg' %}" alt="">
+                                        <img class="hover-img" src="{% static 'img/product-img/{{ stuff.picture_loc }} ' %}" alt="">
 
 
                                         <!-- Favourite -->
@@ -255,298 +260,298 @@
                                     <!-- Product Description -->
                                     <div class="product-description">
                                         <a href="{% static '' %}">
-                                            <h6>ماشین!</h6>
+                                            <h6>{{ stuff.name }}</h6>
                                         </a>
-                                        <p class="product-price"><span class="old-price">$6075.00</span> $5955.00</p>
+                                        <p class="product-price">{{ stuff.price }}</p>
 
                                         <!-- Hover Content -->
                                         <div class="hover-content">
                                             <!-- Add to Cart -->
                                             <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
+                                                <a href="" class="btn essence-btn">مشاهده جزئیات</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        {% endfor %}
+                            <!-- Single Product -->
+{#                            <div class="col-12 col-sm-6 col-lg-4">#}
+{#                                <div class="single-product-wrapper">#}
+{#                                    <!-- Product Image -->#}
+{#                                    <div class="product-img">#}
+{#                                        <img src="{% static 'img/product-img/product-3.jpg' %}" alt="">#}
+{#                                        <!-- Hover Thumb -->#}
+{#                                        <img class="hover-img" src="{% static 'img/product-img/product-3.jpg' %}">#}
+{##}
+{#                                        <!-- Favourite -->#}
+{#                                        <div class="product-favourite">#}
+{#                                            <a href="#" class="favme fa fa-heart"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Product Description -->#}
+{#                                    <div class="product-description">#}
+{##}
+{#                                        <a href="{% url 'stuffDetail' %}">#}
+{#                                            <h6>میز و صندلی باغ</h6>#}
+{#                                        </a>#}
+{#                                        <p class="product-price">$80.00</p>#}
+{##}
+{#                                        <!-- Hover Content -->#}
+{#                                        <div class="hover-content">#}
+{#                                            <!-- Add to Cart -->#}
+{#                                            <div class="add-to-cart-btn">#}
+{#                                                <a href="#" class="btn essence-btn">Add to Cart</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <!-- Single Product -->#}
+{#                            <div class="col-12 col-sm-6 col-lg-4">#}
+{#                                <div class="single-product-wrapper">#}
+{#                                    <!-- Product Image -->#}
+{#                                    <div class="product-img">#}
+{#                                        <img src="{% static 'img/product-img/product-4.jpg' %}" alt="">#}
+{#                                        <!-- Hover Thumb -->#}
+{#                                        <img class="hover-img" src="{% static 'img/product-img/product-4.jpg' %}" alt="">#}
+{##}
+{#                                        <!-- Product Badge -->#}
+{#                                        <div class="product-badge new-badge">#}
+{#                                            <span>فوری</span>#}
+{#                                        </div>#}
+{##}
+{#                                        <!-- Favourite -->#}
+{#                                        <div class="product-favourite">#}
+{#                                            <a href="#" class="favme fa fa-heart"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Product Description -->#}
+{#                                    <div class="product-description">#}
+{#                                        <a href="{% url 'stuffDetail' %}">#}
+{#                                            <h6>میز ناهار خوری ۶ نفره</h6>#}
+{#                                        </a>#}
+{#                                        <p class="product-price">$100.00</p>#}
+{##}
+{#                                        <!-- Hover Content -->#}
+{#                                        <div class="hover-content">#}
+{#                                            <!-- Add to Cart -->#}
+{#                                            <div class="add-to-cart-btn">#}
+{#                                                <a href="#" class="btn essence-btn">Add to Cart</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <!-- Single Product -->#}
+{#                            <div class="col-12 col-sm-6 col-lg-4">#}
+{#                                <div class="single-product-wrapper">#}
+{#                                    <!-- Product Image -->#}
+{#                                    <div class="product-img">#}
+{#                                        <img src="{% static 'img/product-img/product-6.jpg' %}" alt="">#}
+{#                                        <!-- Hover Thumb -->#}
+{#                                        <img class="hover-img" src="{% static 'img/product-img/product-6.jpg' %}" alt="">#}
+{##}
+{#                                        <!-- Favourite -->#}
+{#                                        <div class="product-favourite">#}
+{#                                            <a href="#" class="favme fa fa-heart"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Product Description -->#}
+{#                                    <div class="product-description">#}
+{#                                        <a href="{% url 'stuffDetail' %}">#}
+{#                                            <h6>گوشی موبایل</h6>#}
+{#                                        </a>#}
+{#                                        <p class="product-price">$100.00</p>#}
+{##}
+{#                                        <!-- Hover Content -->#}
+{#                                        <div class="hover-content">#}
+{#                                            <!-- Add to Cart -->#}
+{#                                            <div class="add-to-cart-btn">#}
+{#                                                <a href="#" class="btn essence-btn">Add to Cart</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <!-- Single Product -->#}
+{#                            <div class="col-12 col-sm-6 col-lg-4">#}
+{#                                <div class="single-product-wrapper">#}
+{#                                    <!-- Product Image -->#}
+{#                                    <div class="product-img">#}
+{#                                        <img src="{% static 'img/product-img/product-3.jpg' %}" alt="">#}
+{#                                        <!-- Hover Thumb -->#}
+{#                                        <img class="hover-img" src="{% static 'img/product-img/product-3.jpg' %}" alt="">#}
+{##}
+{##}
+{##}
+{#                                        <!-- Favourite -->#}
+{#                                        <div class="product-favourite">#}
+{#                                            <a href="#" class="favme fa fa-heart"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Product Description -->#}
+{#                                    <div class="product-description">#}
+{##}
+{#                                        <a href="{% url 'stuffDetail' %}">#}
+{#                                            <h6>میز و صندلی باغ</h6>#}
+{#                                        </a>#}
+{#                                        <p class="product-price">توافقی</p>#}
+{##}
+{#                                        <!-- Hover Content -->#}
+{#                                        <div class="hover-content">#}
+{#                                            <!-- Add to Cart -->#}
+{#                                            <div class="add-to-cart-btn">#}
+{#                                                <a href="#" class="btn essence-btn">Add to Cart</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <!-- Single Product -->#}
+{#                            <div class="col-12 col-sm-6 col-lg-4">#}
+{#                                <div class="single-product-wrapper">#}
+{#                                    <!-- Product Image -->#}
+{#                                    <div class="product-img">#}
+{#                                        <img src="{% static 'img/product-img/product-1.jpg' %}" alt="">#}
+{#                                        <!-- Hover Thumb -->#}
+{#                                        <img class="hover-img" src="{% static 'img/product-img/product-1.jpg' %}" alt="">#}
+{##}
+{#                                        <!-- Favourite -->#}
+{#                                        <div class="product-favourite">#}
+{#                                            <a href="#" class="favme fa fa-heart"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Product Description -->#}
+{#                                    <div class="product-description">#}
+{##}
+{#                                        <a href="{% url 'stuffDetail' %}">#}
+{#                                            <h6>ماشین</h6>#}
+{#                                        </a>#}
+{#                                        <p class="product-price">توافقی</p>#}
+{##}
+{#                                        <!-- Hover Content -->#}
+{#                                        <div class="hover-content">#}
+{#                                            <!-- Add to Cart -->#}
+{#                                            <div class="add-to-cart-btn">#}
+{#                                                <a href="#" class="btn essence-btn">Add to Cart</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
 
                             <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-wrapper">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="{% static 'img/product-img/product-3.jpg' %}" alt="">
-                                        <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-3.jpg' %}">
-
-                                        <!-- Favourite -->
-                                        <div class="product-favourite">
-                                            <a href="#" class="favme fa fa-heart"></a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-
-                                        <a href="{% url 'stuffDetail' %}">
-                                            <h6>میز و صندلی باغ</h6>
-                                        </a>
-                                        <p class="product-price">$80.00</p>
-
-                                        <!-- Hover Content -->
-                                        <div class="hover-content">
-                                            <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-wrapper">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="{% static 'img/product-img/product-4.jpg' %}" alt="">
-                                        <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-4.jpg' %}" alt="">
-
-                                        <!-- Product Badge -->
-                                        <div class="product-badge new-badge">
-                                            <span>فوری</span>
-                                        </div>
-
-                                        <!-- Favourite -->
-                                        <div class="product-favourite">
-                                            <a href="#" class="favme fa fa-heart"></a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <a href="{% url 'stuffDetail' %}">
-                                            <h6>میز ناهار خوری ۶ نفره</h6>
-                                        </a>
-                                        <p class="product-price">$100.00</p>
-
-                                        <!-- Hover Content -->
-                                        <div class="hover-content">
-                                            <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{#                            <div class="col-12 col-sm-6 col-lg-4">#}
+{#                                <div class="single-product-wrapper">#}
+{#                                    <!-- Product Image -->#}
+{#                                    <div class="product-img">#}
+{#                                        <img src="{% static 'img/product-img/product-7.jpg' %}" alt="">#}
+{#                                        <!-- Hover Thumb -->#}
+{#                                        <img class="hover-img" src="{% static 'img/product-img/product-7.jpg' %}" alt="">#}
+{##}
+{##}
+{##}
+{#                                        <!-- Favourite -->#}
+{#                                        <div class="product-favourite">#}
+{#                                            <a href="#" class="favme fa fa-heart"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Product Description -->#}
+{#                                    <div class="product-description">#}
+{##}
+{#                                        <a href="{% url 'stuffDetail' %}">#}
+{#                                            <h6>گوشی موبایل نو</h6>#}
+{#                                        </a>#}
+{#                                        <p class="product-price">$95.00</p>#}
+{##}
+{#                                        <!-- Hover Content -->#}
+{#                                        <div class="hover-content">#}
+{#                                            <!-- Add to Cart -->#}
+{#                                            <div class="add-to-cart-btn">#}
+{#                                                <a href="#" class="btn essence-btn">Add to Cart</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
 
                             <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-wrapper">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="{% static 'img/product-img/product-6.jpg' %}" alt="">
-                                        <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-6.jpg' %}" alt="">
-
-                                        <!-- Favourite -->
-                                        <div class="product-favourite">
-                                            <a href="#" class="favme fa fa-heart"></a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <a href="{% url 'stuffDetail' %}">
-                                            <h6>گوشی موبایل</h6>
-                                        </a>
-                                        <p class="product-price">$100.00</p>
-
-                                        <!-- Hover Content -->
-                                        <div class="hover-content">
-                                            <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-wrapper">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="{% static 'img/product-img/product-3.jpg' %}" alt="">
-                                        <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-3.jpg' %}" alt="">
-
-
-
-                                        <!-- Favourite -->
-                                        <div class="product-favourite">
-                                            <a href="#" class="favme fa fa-heart"></a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-
-                                        <a href="{% url 'stuffDetail' %}">
-                                            <h6>میز و صندلی باغ</h6>
-                                        </a>
-                                        <p class="product-price">توافقی</p>
-
-                                        <!-- Hover Content -->
-                                        <div class="hover-content">
-                                            <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-wrapper">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="{% static 'img/product-img/product-1.jpg' %}" alt="">
-                                        <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-1.jpg' %}" alt="">
-
-                                        <!-- Favourite -->
-                                        <div class="product-favourite">
-                                            <a href="#" class="favme fa fa-heart"></a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-
-                                        <a href="{% url 'stuffDetail' %}">
-                                            <h6>ماشین</h6>
-                                        </a>
-                                        <p class="product-price">توافقی</p>
-
-                                        <!-- Hover Content -->
-                                        <div class="hover-content">
-                                            <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-wrapper">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="{% static 'img/product-img/product-7.jpg' %}" alt="">
-                                        <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-7.jpg' %}" alt="">
-
-
-
-                                        <!-- Favourite -->
-                                        <div class="product-favourite">
-                                            <a href="#" class="favme fa fa-heart"></a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-
-                                        <a href="{% url 'stuffDetail' %}">
-                                            <h6>گوشی موبایل نو</h6>
-                                        </a>
-                                        <p class="product-price">$95.00</p>
-
-                                        <!-- Hover Content -->
-                                        <div class="hover-content">
-                                            <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-wrapper">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="{% static 'img/product-img/product-8.jpg' %}" alt="">
-                                        <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-8.jpg' %}" alt="">
-
-                                        <!-- Favourite -->
-                                        <div class="product-favourite">
-                                            <a href="#" class="favme fa fa-heart"></a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <a href="{% url 'stuffDetail' %}">
-                                            <h6>گوشی موبایل نو</h6>
-                                        </a>
-                                        <p class="product-price">$95.00</p>
-
-                                        <!-- Hover Content -->
-                                        <div class="hover-content">
-                                            <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-wrapper">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <img src="{% static 'img/product-img/product-4.jpg' %}" alt="">
-                                        <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/product-4.jpg' %}" alt="">
-
-                                        <!-- Favourite -->
-                                        <div class="product-favourite">
-                                            <a href="#" class="favme fa fa-heart"></a>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Product Description -->
-                                    <div class="product-description">
-                                        <a href="{% url 'stuffDetail' %}">
-                                            <h6>میز ناهار خوری ۶ نفره</h6>
-                                        </a>
-                                        <p class="product-price">$100.00</p>
-
-                                        <!-- Hover Content -->
-                                        <div class="hover-content">
-                                            <!-- Add to Cart -->
-                                            <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{#                            <div class="col-12 col-sm-6 col-lg-4">#}
+{#                                <div class="single-product-wrapper">#}
+{#                                    <!-- Product Image -->#}
+{#                                    <div class="product-img">#}
+{#                                        <img src="{% static 'img/product-img/product-8.jpg' %}" alt="">#}
+{#                                        <!-- Hover Thumb -->#}
+{#                                        <img class="hover-img" src="{% static 'img/product-img/product-8.jpg' %}" alt="">#}
+{##}
+{#                                        <!-- Favourite -->#}
+{#                                        <div class="product-favourite">#}
+{#                                            <a href="#" class="favme fa fa-heart"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Product Description -->#}
+{#                                    <div class="product-description">#}
+{#                                        <a href="{% url 'stuffDetail' %}">#}
+{#                                            <h6>گوشی موبایل نو</h6>#}
+{#                                        </a>#}
+{#                                        <p class="product-price">$95.00</p>#}
+{##}
+{#                                        <!-- Hover Content -->#}
+{#                                        <div class="hover-content">#}
+{#                                            <!-- Add to Cart -->#}
+{#                                            <div class="add-to-cart-btn">#}
+{#                                                <a href="#" class="btn essence-btn">Add to Cart</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <!-- Single Product -->#}
+{#                            <div class="col-12 col-sm-6 col-lg-4">#}
+{#                                <div class="single-product-wrapper">#}
+{#                                    <!-- Product Image -->#}
+{#                                    <div class="product-img">#}
+{#                                        <img src="{% static 'img/product-img/product-4.jpg' %}" alt="">#}
+{#                                        <!-- Hover Thumb -->#}
+{#                                        <img class="hover-img" src="{% static 'img/product-img/product-4.jpg' %}" alt="">#}
+{##}
+{#                                        <!-- Favourite -->#}
+{#                                        <div class="product-favourite">#}
+{#                                            <a href="#" class="favme fa fa-heart"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                    <!-- Product Description -->#}
+{#                                    <div class="product-description">#}
+{#                                        <a href="{% url 'stuffDetail' %}">#}
+{#                                            <h6>میز ناهار خوری ۶ نفره</h6>#}
+{#                                        </a>#}
+{#                                        <p class="product-price">$100.00</p>#}
+{##}
+{#                                        <!-- Hover Content -->#}
+{#                                        <div class="hover-content">#}
+{#                                            <!-- Add to Cart -->#}
+{#                                            <div class="add-to-cart-btn">#}
+{#                                                <a href="#" class="btn essence-btn">Add to Cart</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
 
                         </div>
                     </div>

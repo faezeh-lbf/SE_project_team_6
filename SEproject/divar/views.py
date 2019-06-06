@@ -39,6 +39,7 @@ def index(request):
             user_profile = UserProfile.objects.create(user=user)
             user_profile.phone_number = phone_number
             user_profile.save()
+            login(request, user)
             return redirect('/divar/user_profile/')
     else:
         HttpResponse("<html><body>not posted.</body></html>")
