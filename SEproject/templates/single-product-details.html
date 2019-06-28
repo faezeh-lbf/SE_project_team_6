@@ -10,7 +10,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>گوشی موبایل</title>
+    <title></title>
 
  <!-- Favicon  -->
     <link rel="icon" href="{% static 'img/core-img/favicon.ico'%}">
@@ -19,6 +19,29 @@
     <link rel="stylesheet" href="{% static 'css/core-style.css'%}">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
 
+    <script>
+        function favorite(elmnt, id) {
+            console.log("favorite is clicked");
+            console.log(id);
+            $.ajax({
+                url: '/divar/favorite',
+                data: {
+                    'id': id
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log("here you favorite the position");
+                    if (data.is_favorite) {
+                        elmnt.style.color = 'gold';
+                    }else{
+                        elmnt.style.color = 'gray';
+                    }
+
+                }
+            });
+
+        }
+    </script>
 </head>
 
 <body>
@@ -212,15 +235,15 @@
         <!-- Single Product Description -->
         <div class="single_product_desc clearfix">
             <a href="cart.html">
-                <h2>گوشی موبایل آیفون نو و سالم</h2>
+                <h2>{{ stuff.name }}</h2>
             </a>
-            <p class="product-price"><span class="old-price">$120.00</span> $100.00</p>
-            <p class="product-desc" dir = "rtl">گوشی موبایل بدون خط و خش و با همه تجهیزات جانبی</p>
+            <p class="product-price">{{ stuff.price }}</p>
+            <p class="product-desc" dir = "rtl">{{ stuff.description }}</p>
 			<dl dir = "rtl">
   				<dt >دسته بندی</dt>
-  			  	<dd>گوشی موبایل</dd>
+  			  	<dd>{{ stuff.classtering3 }}</dd>
  				 <dt>نشانی</dt>
- 				 <dd>تهران، آزادی</dd>
+ 				 <dd>{{ stuff.location }}</dd>
  				 <dt>سال ساخت</dt>
  				 <dd>۲۰۱۸</dd>
 			</dl>
@@ -234,7 +257,7 @@
 					
                     <!-- Favourite -->
                     <div class="product-favourite ml-4">
-                        <a href="#" class="favme fa fa-heart title="ثبت""></a>
+                        <a href="" class="favme fa fa-heart" title="" onclick="favorite(this, {{ stuff.id }})"></a>
                     </div>
                 </div>
             </form>

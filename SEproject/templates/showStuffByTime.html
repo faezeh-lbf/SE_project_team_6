@@ -248,7 +248,7 @@
                                     <div class="product-img">
                                         <img src="{% static 'img/product-img/product-1.jpg' %}" alt="">
                                         <!-- Hover Thumb -->
-                                        <img class="hover-img" src="{% static 'img/product-img/{{ stuff.picture_loc }} ' %}" alt="">
+                                        <img class="hover-img" src="{% comment %}{% static 'img/product-img/{{ stuff.picture_loc }} ' %}{% endcomment %}" alt="">
 
 
                                         <!-- Favourite -->
@@ -268,7 +268,7 @@
                                         <div class="hover-content">
                                             <!-- Add to Cart -->
                                             <div class="add-to-cart-btn">
-                                                <a href="" class="btn essence-btn">مشاهده جزئیات</a>
+                                                <a href="/divar/{{ stuff.id }}/detail/" class="btn essence-btn">مشاهده جزئیات</a>
                                             </div>
                                         </div>
                                     </div>

@@ -1,7 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.views import generic
@@ -43,7 +43,6 @@ def index(request):
             return redirect('/divar/user_profile/')
     else:
         HttpResponse("<html><body>not posted.</body></html>")
-    # return HttpResponse("<html><body>not posted.</body></html>")
     return render(request, 'index.html')
 
 
@@ -55,13 +54,20 @@ class ShowStuff(generic.ListView):
         return Stuff.objects.order_by('id')[:20]
 
 
-def stuffDetail(request):
-    stuffId = 1
+def stuffDetail(request, stuff_id):
     message = ""
-    # stuff = get_object_or_404(Stuff, pk=stuffId)
-    stuff = {}
+    stuff = get_object_or_404(Stuff, pk=stuff_id)
+    # stuff = {}
     user = request.user
     return render(request, 'single-product-details.html', {'stuff': stuff, 'message': message})
+
+
+def favorite_item(request):
+    print("in favorite function")
+    data = {
+        'is_favorite': True
+    }
+    return JsonResponse(data)
 
 
 @method_decorator([login_required], name='dispatch')
