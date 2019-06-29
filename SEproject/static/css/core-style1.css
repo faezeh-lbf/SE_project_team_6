@@ -10,12 +10,28 @@
 @import url(../css/jquery-ui.min.css);
 @import url(../css/nice-select.css);
 @import url(../css/font-awesome.min.css);
+
 /* :: 3.0 Common/Base CSS */
 * {
   margin: 0;
   padding: 0; }
+ .button {
+  background-color: #D3D3D3; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
 
 body {
+  unicode-bidi: bidi-override !important;
+  direction: unset !important;
+  text-align:right;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   background-color: #ffffff;
@@ -23,6 +39,7 @@ body {
   @media only screen and (max-width: 767px) {
     body {
       margin-top: 80px; } }
+	  
 
 h1,
 h2,
@@ -68,6 +85,7 @@ ol {
 img {
   height: auto;
   max-width: 100%; }
+ 
 
 /* Spacing */
 .mt-15 {
