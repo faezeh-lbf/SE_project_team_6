@@ -7,19 +7,9 @@ class UserProfile(models.Model):
     phone_number = models.CharField(max_length=100)
 
 
-class Classtering1(models.Model):
+class Classtering(models.Model):
     name = models.CharField(max_length=30)
-
-
-class Classtering2(models.Model):
-    name = models.CharField(max_length=30)
-    parent = models.OneToOneField(Classtering1, on_delete=models.CASCADE, primary_key=True)
-
-
-class Classtering3(models.Model):
-    name = models.CharField(max_length=30)
-    parent = models.OneToOneField(Classtering2, on_delete=models.CASCADE, primary_key=True)
-
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, blank=True, null=True)
 
 class Stuff(models.Model):
     name = models.CharField(max_length=30)
@@ -30,5 +20,5 @@ class Stuff(models.Model):
     has_pic = models.BooleanField(default=False)
     city = models.CharField(max_length=30, default='Tehran')
     location = models.CharField(max_length=30)
-    classtering3 = models.ForeignKey(Classtering3, on_delete=models.CASCADE, null=True)
+    classtering = models.ForeignKey(Classtering, on_delete=models.CASCADE, null=True)
     picture_loc = models.ImageField(blank=True, null=True, upload_to= "stuff_images")
