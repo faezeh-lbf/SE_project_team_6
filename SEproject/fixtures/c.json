@@ -1,0 +1,45 @@
+[
+  {
+    "model": "divar.classtering",
+    "pk": 1,
+    "fields": {
+      "name": "املاک"
+    }
+  },
+  {
+    "model": "divar.classtering",
+    "pk": 2,
+    "fields": {
+      "name": "مربوط یه خانه"
+    }
+  },
+  {
+    "model": "divar.classtering",
+    "pk": 3,
+    "fields": {
+      "name": "تجاری",
+      "parent": 1
+    }
+  },
+  {
+    "model": "divar.classtering",
+    "pk": 4,
+    "fields": {
+      "name": "خدمات"
+    }
+  },
+  {
+    "model": "divar.classtering",
+    "pk": 5,
+    "fields": {
+      "name": "پوشاک"
+    }
+  },
+  {
+    "model": "divar.classtering",
+    "pk": 6,
+    "fields": {
+      "name": "خودرو"
+    }
+  }
+]
