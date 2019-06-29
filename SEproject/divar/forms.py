@@ -1,9 +1,11 @@
 from django import forms
-from .models import Stuff
+from django.forms import ChoiceField
+
+from .models import Stuff, Classtering3, Classtering2, Classtering1
 
 
 class ItemForm(forms.ModelForm):
 
     class Meta:
         model = Stuff
-        fields = ['name', 'price', 'description', 'location']
+        fields = ['name', 'price', 'city', 'description', 'location', 'classtering3', 'picture', 'is_foori']
