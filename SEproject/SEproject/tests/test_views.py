@@ -1,13 +1,32 @@
 from django.core.urlresolvers import reverse
-
 from divar.models import UserProfile
 from django.test import TestCase
 from django.contrib.auth.models import User
 from divar import views
 from django.contrib.auth import login, authenticate
-# class UserProfileViewTest(TestCase):
-#      @classmethod
-    #
+class UserProfileViewTest(TestCase):
+    def setUp(self):
+        # Create two users
+        test_user1 = User.objects.create_user(username='testuser1@gmail.com', password='1X<ISRUkw+tuK')
+        test_user2 = User.objects.create_user(username='testuser2@gmail.com', password='2HJ1vRV0Z&3iD')
+        user1p=UserProfile.objects.create(user=test_user1, phone_number="12345678")
+        user2p = UserProfile.objects.create(user=test_user2, phone_number="12345679")
+        test_user1.save()
+        test_user2.save()
+        user1p.save()
+        user2p.save()
+
+    def test_logged_in_uses_correct_template(self):
+        login = self.client.login(username='testuser1@gmail.com', password='1X<ISRUkw+tuK')
+        response = self.client.get(reverse('user_profile'))
+
+        # Check our user is logged in
+        self.assertEqual(str(response.context['user']), 'testuser1@gmail.com')
+        # Check that we got a response "success"
+        self.assertEqual(response.status_code, 200)
+
+        # Check we used correct template
+        self.assertTemplateUsed(response, 'user_profile.html')
     # def test_view_url_exists_at_desired_location(self):
     #     response = self.client.get('/divar/user_profile/')
     #     self.assertEqual(response.status_code, 200)
@@ -28,7 +47,7 @@ from django.contrib.auth import login, authenticate
     #     response = self.client.get(url)
     #     self.assertContains(response, user_profile.user.mail)
     #     self.assertContains(response, user_profile.user.password)
-
+    #
 
     # def test_detail_view_with_a_userprofile(self):
     #     """
