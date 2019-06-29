@@ -60,7 +60,7 @@ class Clustering1ModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
 
-        clustering1=Classtering1.objects.create(name="وسایل نقلیه")
+        clustering1=Classtering.objects.create(name="وسایل نقلیه")
 
     def test_name_label(self):
         clustering1 = Stuff.objects.get(id=1)
@@ -76,8 +76,8 @@ class Clustering2ModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
 
-        clustering1=Classtering1.objects.create(name="وسایل نقلیه")
-        clustering2=Classtering2.objects.create(name="خودرو", parent=clustering1)
+        clustering1=Classtering.objects.create(name="وسایل نقلیه")
+        clustering2=Classtering.objects.create(name="خودرو", parent=clustering1)
 
     def test_name_label(self):
         clustering2 = Stuff.objects.get(id=1)
@@ -98,9 +98,9 @@ class Clustering2ModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
 
-        clustering1=Classtering1.objects.create(name="وسایل نقلیه")
-        clustering2=Classtering2.objects.create(name="خودرو", parent=clustering1)
-        clustering3 = Classtering2.objects.create(name="سواری", parent=clustering2)
+        clustering1=Classtering.objects.create(name="وسایل نقلیه")
+        clustering2=Classtering.objects.create(name="خودرو", parent=clustering1)
+        clustering3 = Classtering.objects.create(name="سواری", parent=clustering2)
 
     def test_name_label(self):
         clustering3 = Stuff.objects.get(id=1)
