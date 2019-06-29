@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
+from django.views.static import serve
+
+from . import settings
 from divar import views
 
 urlpatterns = [
@@ -24,3 +27,6 @@ urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
 
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),]
